@@ -7,11 +7,11 @@ function initDb() {
         useUnifiedTopology: true,
     })
     mongoose.connection.on('connected', async () => {
-        console.log('Connexion Ã  MongoDB Ã©tablie avec succÃ¨s')
+        console.log('Connexion réussi')
     })
     mongoose.connection.on('error', (err) => {
-        console.error('Erreur de connexion Ã  MongoDB:', err)
+        console.error('Erreur de connexion:', err)
     })
 }
 
-module.exports = initDb()
+module.exports = initDb
