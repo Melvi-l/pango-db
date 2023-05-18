@@ -9,8 +9,10 @@ app.use(express.json())
 const initDb = require('./config_db')
 initDb()
 
-const router = require('./routes')
-app.use('/', router)
+const authRoutes = require('./routes/auth')
+const pangolinRoutes = require('./routes/pangolin');
+app.use('/auth', authRoutes)
+app.use('/pangolin', pangolinRoutes)
 
 const PORT = 8080
 app.listen(PORT, () => {
