@@ -5,18 +5,19 @@ const mongoose = require('mongoose')
 const Pangolin = require('../models/pangolin')
 
 const authMiddleware = require('../auth_middleware')
-router.use(authMiddleware)
+// router.use(authMiddleware)
 
 router.get('/', (req, res, next) => {
+    console.log("aah")
     Pangolin.find()
         .then((pangolinList) => res.status(200).json(pangolinList))
-        .error((error) => res.status(400).json({ error }))
+        .catch((error) => res.status(400).json({ error }))
 })
 router.get('/:id', (req, res, next) => {
     const id = req.params.id
     Pangolin.findOne({ _id: id })
         .then((pangolin) => res.status(200).json(pangolin))
-        .error((error) => res.status(400).json({ error }))
+        .catch((error) => res.status(400).json({ error }))
 })
 router.post('/', (res, req, next) => {
     delete req.body._id
@@ -25,7 +26,7 @@ router.post('/', (res, req, next) => {
     })
     pangolin.save()
         .then(() => res.status(201).json({ message: 'Pangolin create !' }))
-        .error(() => res.status(400).json({ error }))
+        .catch(() => res.status(400).json({ error }))
 })
 router.put('/:id', (res, req, next) => {
     const id = req.params.id

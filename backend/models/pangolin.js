@@ -16,4 +16,6 @@ const pangolinSchema = new mongoose.Schema({
     }],
 })
 
-module.exports = mongoose.model('Pangolin', pangolinSchema)
+const Pangolin = mongoose.model('Pangolin', pangolinSchema)
+
+module.exports = Pangolin

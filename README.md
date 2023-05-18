@@ -15,15 +15,22 @@ Modele:
 ```js
 type user = {
     username: String,
-    password: String, 
+    password: String,
+    pangolin: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Pangolin',
+    }, 
+    friend: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+    }],
 }
 ```
 - Pangolin: 
 ```js
 type pangolin = {
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+    name: {
+        type: String,
         required: true,
     },
     role: {
@@ -31,10 +38,6 @@ type pangolin = {
         enum: ['Guerrier', 'Alchimiste', 'Sorcier', 'Espion', 'Enchanteur'],
         default: 'Guerrier',
     },  
-    friend: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Pangolin',
-    }],
 }
 ```
 ### AUTH

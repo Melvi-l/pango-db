@@ -1,22 +1,30 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core'
+import { BrowserModule } from '@angular/platform-browser'
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 
-import { AppComponent } from './app.component';
-import { FetchComponent } from './fetch/fetch.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { AppComponent } from './app.component'
+import { FetchComponent } from './fetch/fetch.component'
+import { ReactiveFormsModule } from '@angular/forms'
+import { AuthInterceptor } from 'src/interceptors/Auth.interceptor'
+import AuthService from 'src/services/Auth.service'
 
 @NgModule({
   declarations: [
     AppComponent,
-    FetchComponent
+    FetchComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
