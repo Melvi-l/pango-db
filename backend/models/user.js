@@ -8,6 +8,10 @@ const userSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Pangolin',
   },
+  friends: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+}],
 })
   
 userSchema.plugin(uniqueValidator) 

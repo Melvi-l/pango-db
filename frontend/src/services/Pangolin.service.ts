@@ -1,8 +1,10 @@
 import { HttpClient } from "@angular/common/http"
 import { Injectable } from "@angular/core"
+import PangolinModel from "src/models/pangolin.model"
+import ResBody from "src/models/resbody.model"
 
 export type PangolinInput = {
-    name: String
+    name: string
     role: 'Guerrier' | 'Alchimiste' | 'Sorcier' | 'Espion' | 'Enchanteur'
 }
 
@@ -16,18 +18,18 @@ export default class PangolinService {
         this.url = "http://localhost:8080/pangolin/"
     }
     findAllPangolin() {
-        return this.http.get(this.url)
+        return this.http.get<PangolinModel[]>(this.url)
     }
     findOnePangolin(id: string) {
-        return this.http.get(this.url+id)
+        return this.http.get<PangolinModel>(this.url+id)
     }
     createPangolin(pangolinInput: PangolinInput) {
-        return this.http.post(this.url, pangolinInput)
+        return this.http.post<ResBody>(this.url, pangolinInput)
     }
     updatePangolin(id: string, pangolinInput: PangolinInput) {
-        return this.http.put(this.url+id, pangolinInput)
+        return this.http.put<PangolinModel>(this.url+id, pangolinInput)
     }
     deletePangolin(id: string) {
-        return this.http.delete(this.url+id)
+        return this.http.delete<ResBody>(this.url+id)
     }
 }

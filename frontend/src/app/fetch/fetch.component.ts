@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { error } from 'console';
-import PangolinService from 'src/services/Pangolin.service';
+import PangolinService from 'src/services/pangolin.service';
 
 @Component({
   selector: 'fetch',
@@ -24,8 +24,8 @@ export class FetchComponent implements OnInit {
     console.log("fetching")
     this.pangolinService.findAllPangolin()
       .subscribe({
-        next: (json) => {
-          console.log(json)
+        next: (pangolinList) => {
+          console.log(pangolinList)
         },
         error(error) {
           console.log(error)
@@ -34,10 +34,6 @@ export class FetchComponent implements OnInit {
           console.log("fetched")
         }
       })
-  }
-
-  postData() {
-
   }
 
 }

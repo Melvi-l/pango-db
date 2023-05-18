@@ -10,10 +10,6 @@ const pangolinSchema = new mongoose.Schema({
         enum: ['Guerrier', 'Alchimiste', 'Sorcier', 'Espion', 'Enchanteur'],
         default: 'Guerrier',
     },
-    friends: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Pangolin',
-    }],
 })
 
 const Pangolin = mongoose.model('Pangolin', pangolinSchema)
