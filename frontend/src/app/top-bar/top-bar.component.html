@@ -1,1 +1,11 @@
-<p>top-bar works!</p>
+<header>
+    <h1>PangoDB</h1>
+    <nav *ngIf="isAuth()">
+        <a routerLink="/profil" routerLinkActive="active">Profil</a> 
+        <a routerLink="/friends" routerLinkActive="active">Liste d'amis</a> 
+    </nav>
+    <nav *ngIf="!isAuth()">
+        <a routerLink="/login" routerLinkActive="active">Connexion</a> 
+        <a routerLink="/signup" routerLinkActive="active">Inscription</a> 
+    </nav>
+</header>

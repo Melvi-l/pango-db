@@ -1,0 +1,24 @@
+<main>
+    <div *ngIf="isLoading()">Chargement...</div>
+    <div class=content *ngIf="!isLoading()">
+        <h2>Profil</h2>
+        <div class="profil">
+            <div class="card" [style.background-image]="getBackground()">
+                <div class="username">{{pangolin!.username}}</div>
+                <div class="role">{{pangolin!.role}}</div>
+            </div>
+            <form (submit)="submit()">
+                <fieldset>
+                    <label for="username">Nom d'utilisateur</label>
+                    <input type="text" name="username" id="username" [(ngModel)]="pangolin!.username"/>
+                </fieldset>
+                <fieldset>
+                    <label>Role</label>
+                    <role-button *ngFor="let role of roleList" [role]="role" [active]="role==pangolin?.role" (click)="setRole(role)"></role-button>
+                </fieldset>
+                <button class="plain" type="submit">Sauvegarder</button>
+            </form>
+        </div>
+        <button class="logout" (click)="logOut()">Se déconnecter</button>
+    </div> 
+</main>

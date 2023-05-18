@@ -4,15 +4,15 @@ const router = express.Router()
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
-const User = require('../models/user')
+const Pangolin = require('../models/pangolin')
 
 router.post("/signup", (req, res, next) => {
+    console.log("signup called")
     const { username, password } = req.body
-    console.log(req.body) 
     const SALT = 5
     bcrypt.hash(password, SALT)
         .then(hash => {
-            const user = new User({
+            const user = new Pangolin({
                 username,
                 password: hash
             })
@@ -36,12 +36,13 @@ router.post("/signup", (req, res, next) => {
 })
 
 router.post("/login", (req, res, next) => {
-    User.findOne({ email: req.body.email })
+    const {username, password} = req.body
+    Pangolin.findOne({ username })
         .then(user => {
             if (!user) {
                 return res.status(401).json({ message: 'Username incorrect.' })
             }
-            bcrypt.compare(req.body.password, user.password)
+            bcrypt.compare(password, user.password)
                 .then(valid => {
                     if (!valid) {
                         return res.status(401).json({ message: 'Password incorrect.' })

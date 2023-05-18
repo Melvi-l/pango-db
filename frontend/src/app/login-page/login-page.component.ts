@@ -26,6 +26,7 @@ export class LoginPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // API
   logIn() {
     if (this.logInForm.invalid) {
       return
@@ -33,7 +34,9 @@ export class LoginPageComponent implements OnInit {
     const authInput: AuthInput = this.logInForm.value
     this.authService.logIn(authInput)
       .subscribe({
-        next: () => {
+        next: (authRes) => {
+          this.authService.setAuthToken(authRes.token)
+          this.authService.setUserId(authRes.userId)
           this.router.navigate(['/profil'])
         },
         error: (error) => {

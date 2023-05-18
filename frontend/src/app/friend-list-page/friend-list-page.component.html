@@ -1,0 +1,36 @@
+<aside>
+    <h2>
+        Liste d'amis
+    </h2>
+    <ul>
+        <li *ngFor="let friend of friendList()">
+            <div class="icon" [style.background-image]="getIcon(friend)"></div>
+            <div class="text">
+                {{friend.username}}
+            </div>
+            <button class="remove" (click)="removeToFriendList(friend)">
+                &#10006;
+            </button>
+        </li>
+    </ul>
+</aside>
+<main>
+    <header>
+        <h2>
+            Autres pangolins
+        </h2>
+        <div class="input">
+            <img src="../../assets/icons/searchsvg.svg" alt="">
+            <input class="search" type="text" [(ngModel)]="searchString" />
+        </div>
+    </header>
+    <ul>
+        <li *ngFor="let otherPangolin of pangolinListToDisplay()" [ngClass]="{'alreadyFriend': isFriend(otherPangolin)}"
+            (click)="addToFriendList(otherPangolin)">
+            <div class="icon" [style.background-image]="getIcon(otherPangolin)"></div>
+            <div class="text">
+                {{otherPangolin.username}}
+            </div>
+        </li>
+    </ul>
+</main>

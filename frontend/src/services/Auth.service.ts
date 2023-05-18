@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http"
 import { Injectable } from "@angular/core"
+import { error } from "console"
 import { stringify } from "querystring"
 import ResBody from "src/models/resbody.model"
 
@@ -21,33 +22,20 @@ export default class AuthService {
     private url: string
     private userId: string = ""
     private authToken: string = ""
-        
+
     constructor(private http: HttpClient) {
         this.url = "http://localhost:8080/auth/"
     }
     logIn(authInput: AuthInput) {
-        const res = this.http.post<AuthRes>(this.url+"login", authInput)
-        res.subscribe({
-            next: (authRes) => {
-                this.setAuthToken(authRes.token)
-                this.setUserId(authRes.userId)
-            }
-        })
-        return res 
+        console.log(this.authToken) 
+        return this.http.post<AuthRes>(this.url + "login", authInput)
     }
     signUp(authInput: AuthInput) {
-        console.log(authInput)
-        const res = this.http.post<AuthRes>(this.url+"signup", authInput)
-        res.subscribe({
-            next: (authRes) => {
-                this.setAuthToken(authRes.token)
-                this.setUserId(authRes.userId)
-            }
-        })
-        return res
+        return this.http.post<AuthRes>(this.url + "signup", authInput)
     }
     logOut() {
         this.authToken = ""
+        
     }
     getAuthToken(): string {
         return this.authToken

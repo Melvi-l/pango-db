@@ -4,19 +4,22 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component'
 import { FetchComponent } from './fetch/fetch.component'
-import { ReactiveFormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { AuthInterceptor } from 'src/interceptors/Auth.interceptor'
 import { AuthGuard } from './auth.guard';
 import { LoginPageComponent } from './login-page/login-page.component';
-import { SigupPageComponent } from './sigup-page/sigup-page.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
+import { SignupPageComponent } from './signup-page/signup-page.component';
+import { ProfilPageComponent } from './profil-page/profil-page.component';
+import { RoleButtonComponent } from './role-button/role-button.component';
+import { FriendListPageComponent } from './friend-list-page/friend-list-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'profil', pathMatch: 'full' },
-  { path: 'profil', component: FetchComponent, canActivate: [AuthGuard]},
-  { path: 'friends', component: FetchComponent, canActivate: [AuthGuard]},
+  { path: 'profil', component: ProfilPageComponent, canActivate: [AuthGuard]},
+  { path: 'friends', component: FriendListPageComponent, canActivate: [AuthGuard]},
   { path: 'login', component: LoginPageComponent},
-  { path: 'signup', component: SigupPageComponent},
+  { path: 'signup', component: SignupPageComponent},
 ];
 
 @NgModule({
@@ -24,13 +27,17 @@ const routes: Routes = [
     AppComponent,
     FetchComponent,
     LoginPageComponent,
-    SigupPageComponent,
+    SignupPageComponent,
     TopBarComponent,
+    ProfilPageComponent,
+    RoleButtonComponent,
+    FriendListPageComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [

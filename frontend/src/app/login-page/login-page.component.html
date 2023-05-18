@@ -1,14 +1,15 @@
 <main>
-    <form [formGroup]="logInForm" (ngSubmit)="logIn()">
-        <fieldset>
-            <label for="username">Nom d'utilisateur</label>
-            <input id="username" type="text" formControlName="username"/>
-        </fieldset>
-        <fieldset>
-            <label for="password">Mot de passe</label>
-            <input id="password" type="password" formControlName="password"/>  
-        </fieldset>
-        <!-- TODO impl: gestion des erreurs -->
-        <button type="submit" [disabled]="logInForm.invalid">Se connecter</button>
-    </form>
+        <h2>Connexion</h2>
+        <form [formGroup]="logInForm" (ngSubmit)="logIn()">
+            <fieldset>
+                <label for="username">Nom d'utilisateur</label>
+                <input id="username" type="text" formControlName="username"/>
+            </fieldset>
+            <fieldset>
+                <label for="password">Mot de passe</label>
+                <input id="password" type="password" formControlName="password"/>
+            </fieldset>
+            <!-- TODO impl: gestion des erreurs -->
+            <button class="plain" type="submit" [disabled]="logInForm.invalid">Se connecter</button>
+        </form>
 </main>

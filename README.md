@@ -11,28 +11,21 @@ L'objectif est de créer un mini carnet d'adresse pour "Pangolin" sur Express.js
 port: `http://localhost/8080`
 
 Modele: 
-- User
+Pangolin
 ```js
-type user = {
-    username: String,
-    password: String,
-    pangolin: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Pangolin',
-    }, 
+type Pangolin = {
+    username: {
+        type: String,
+        required: true,
+    },
+    password: {
+        type: String,
+        required: true,
+    },
     friend: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
     }],
-}
-```
-- Pangolin: 
-```js
-type pangolin = {
-    name: {
-        type: String,
-        required: true,
-    },
     role: {
         type: String,
         enum: ['Guerrier', 'Alchimiste', 'Sorcier', 'Espion', 'Enchanteur'],
@@ -65,3 +58,6 @@ PUT `/pangolin/:id`
 ### DELETE (auth)
 DELETE `/pangolin/:id`
 
+## Maquette UI 
+
+Voir le figma [ICI](https://www.figma.com/file/UJoRrhzQ8ll8ni7kRAiNi1/PangoDB?type=design&node-id=0%3A1&t=m2YhP6smNUg7kqX0-1)

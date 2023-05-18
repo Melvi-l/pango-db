@@ -1,0 +1,23 @@
+.wrapper {
+    align-self: stretch;
+    padding: 12px 16px;
+    border-radius: 1000px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    cursor: pointer;
+}
+.active {
+    background: rgba(0, 0, 0, .1);
+    text-decoration: underline;
+}
+.icon {
+    height: 42px;
+    aspect-ratio: 1;
+    background-size: cover;
+    background-position: center;
+}
+

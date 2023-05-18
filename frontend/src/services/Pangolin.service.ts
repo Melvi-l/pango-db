@@ -26,8 +26,8 @@ export default class PangolinService {
     createPangolin(pangolinInput: PangolinInput) {
         return this.http.post<ResBody>(this.url, pangolinInput)
     }
-    updatePangolin(id: string, pangolinInput: PangolinInput) {
-        return this.http.put<PangolinModel>(this.url+id, pangolinInput)
+    updatePangolin(id: string, pangolinInput: PangolinModel) {
+        return this.http.put<ResBody>(this.url+id, pangolinInput)
     }
     deletePangolin(id: string) {
         return this.http.delete<ResBody>(this.url+id)

@@ -1,6 +1,9 @@
 type PangolinModel = {
     _id: string
-    name: string
-    role: 'Guerrier' | 'Alchimiste' | 'Sorcier' | 'Espion' | 'Enchanteur'
+    username: string 
+    role: Role
+    friendIdList: string[]
 }
+
+export type Role = 'Guerrier' | 'Alchimiste' | 'Sorcier' | 'Espion' | 'Enchanteur'
 export default PangolinModel
