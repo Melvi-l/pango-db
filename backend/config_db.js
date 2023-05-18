@@ -1,7 +1,8 @@
 const mongoose = require('mongoose')
+const pangolin = require('./models/pangolin')
 
 function initDb() {
-    const DB_URI = "mongodb://localhost:27017/"
+    const DB_URI = "mongodb+srv://luno:sedX2ThNlXncg9A0@revision.nkwrvur.mongodb.net/?retryWrites=true&w=majority"
     mongoose.connect(DB_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
