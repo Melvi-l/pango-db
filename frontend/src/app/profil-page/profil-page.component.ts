@@ -16,6 +16,8 @@ const ROLE_LIST: Role[] = [
 })
 export class ProfilPageComponent implements OnInit {
 
+  isFormLoading: boolean = false
+
   pangolin?: PangolinModel
   roleList: Role[] = ROLE_LIST;
 
@@ -36,18 +38,24 @@ export class ProfilPageComponent implements OnInit {
       })
   }
   submit() {
-    if (this.pangolin) {
-      this.pagolinService.updatePangolin(this.authService.getUserId(), this.pangolin)
-        .subscribe({
-          next: (resBody) => {
-            console.log(resBody.message)
-            this.fetchUserPangolin()
-          },
-          error(error) {
-            console.log(error)
-          }
-        })
+    if (!this.pangolin) {
+      return
     }
+    this.isFormLoading = true
+    this.pagolinService.updatePangolin(this.authService.getUserId(), this.pangolin)
+      .subscribe({
+        next: (resBody) => {
+          console.log(resBody.message)
+        },
+        error: (error) => {
+          console.log(error)
+          this.isFormLoading = false
+        },
+        complete: () => {
+          this.fetchUserPangolin()
+          this.isFormLoading = false
+        }
+      })
   }
   logOut() {
     this.authService.logOut()
@@ -55,7 +63,7 @@ export class ProfilPageComponent implements OnInit {
   }
 
   // Computed
-  isLoading() {
+  isPageLoading() {
     return this.pangolin == undefined
   }
   getBackground() {

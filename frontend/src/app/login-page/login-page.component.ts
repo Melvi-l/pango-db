@@ -11,6 +11,7 @@ import AuthService, { AuthInput } from 'src/services/auth.service'
 export class LoginPageComponent implements OnInit {
 
   error: string = ""
+  isLoading: boolean = false
   logInForm: FormGroup
 
   constructor(
@@ -31,17 +32,22 @@ export class LoginPageComponent implements OnInit {
     if (this.logInForm.invalid) {
       return
     }
+    this.isLoading = true
     const authInput: AuthInput = this.logInForm.value
     this.authService.logIn(authInput)
       .subscribe({
         next: (authRes) => {
           this.authService.setAuthToken(authRes.token)
           this.authService.setUserId(authRes.userId)
-          this.router.navigate(['/profil'])
         },
         error: (error) => {
           console.error(error)
           this.error = error
+          this.isLoading = false
+        },
+        complete: () => {
+          this.router.navigate(['/profil'])
+          this.isLoading = false
         }
       })
   }

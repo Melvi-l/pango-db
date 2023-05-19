@@ -21,6 +21,7 @@ function matchPasswords(control: AbstractControl): { [key: string]: any } | null
 export class SignupPageComponent implements OnInit {
 
   error: string = ""
+  isLoading: boolean = false
   signUpForm: FormGroup
 
   constructor(
@@ -42,17 +43,22 @@ export class SignupPageComponent implements OnInit {
     if (this.signUpForm.invalid) {
       return
     }
+    this.isLoading = true
     const authInput: AuthInput = this.signUpForm.value
     this.authService.signUp(authInput)
-      .subscribe({
+    .subscribe({
         next: (authRes) => {
           this.authService.setAuthToken(authRes.token)
           this.authService.setUserId(authRes.userId)
-          this.router.navigate(['/profil'])
         },
         error: (error) => {
           console.error(error)
           this.error = error
+          this.isLoading = true
+        },
+        complete: () => {
+          this.router.navigate(['/profil'])
+          this.isLoading = true
         }
       })
   }

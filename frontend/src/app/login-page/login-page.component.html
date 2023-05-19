@@ -10,6 +10,6 @@
                 <input id="password" type="password" formControlName="password"/>
             </fieldset>
             <!-- TODO impl: gestion des erreurs -->
-            <button class="plain" type="submit" [disabled]="logInForm.invalid">Se connecter</button>
+            <loading-button [isDisabled]="logInForm.invalid" [isLoading]="isLoading">Se connecter</loading-button>
         </form>
 </main>

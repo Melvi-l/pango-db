@@ -1,0 +1,25 @@
+.loading {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px;
+}
+
+svg {
+    height: 24px;
+    animation: rotate 1s linear infinite;
+}
+
+.track {
+    fill: rgba(255, 255, 255, 0.4);
+}
+.thumb {
+    fill: white;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}

@@ -25,7 +25,6 @@ export class FriendListPageComponent implements OnInit {
     this.pagolinService.findOnePangolin(this.authService.getUserId())
       .subscribe({
         next: (pangolin) => {
-          console.log(pangolin)
           this.userPangolin = pangolin
         },
         error(error) {
@@ -52,10 +51,12 @@ export class FriendListPageComponent implements OnInit {
     .subscribe({
       next: (resBody) => {
         console.log(resBody.message)
-        this.fetchUserPangolin()
       },
       error(error) {
         console.error(error)
+      },
+      complete: () => {
+        this.fetchUserPangolin()
       }
     })
   }

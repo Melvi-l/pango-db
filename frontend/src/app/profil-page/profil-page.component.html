@@ -1,6 +1,6 @@
 <main>
-    <div *ngIf="isLoading()">Chargement...</div>
-    <div class=content *ngIf="!isLoading()">
+    <div *ngIf="isPageLoading()">Chargement...</div>
+    <div class=content *ngIf="!isPageLoading()">
         <h2>Profil</h2>
         <div class="profil">
             <div class="card" [style.background-image]="getBackground()">
@@ -10,15 +10,16 @@
             <form (submit)="submit()">
                 <fieldset>
                     <label for="username">Nom d'utilisateur</label>
-                    <input type="text" name="username" id="username" [(ngModel)]="pangolin!.username"/>
+                    <input type="text" name="username" id="username" [(ngModel)]="pangolin!.username" />
                 </fieldset>
                 <fieldset>
                     <label>Role</label>
-                    <role-button *ngFor="let role of roleList" [role]="role" [active]="role==pangolin?.role" (click)="setRole(role)"></role-button>
+                    <role-button *ngFor="let role of roleList" [role]="role" [active]="role==pangolin?.role"
+                        (click)="setRole(role)"></role-button>
                 </fieldset>
-                <button class="plain" type="submit">Sauvegarder</button>
+                <loading-button [isLoading]="isFormLoading">Sauvegarder</loading-button>
             </form>
         </div>
         <button class="logout" (click)="logOut()">Se déconnecter</button>
-    </div> 
+    </div>
 </main>

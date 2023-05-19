@@ -14,6 +14,6 @@
             <input id="confirmPassword" type="password" formControlName="confirmPassword"/>  
         </fieldset>
         <!-- TODO impl: gestion des erreurs -->
-        <button class="plain" type="submit" [disabled]="signUpForm.invalid">S'inscrire</button>
+        <loading-button [isDisabled]="signUpForm.invalid" [isLoading]="isLoading">S'inscrire</loading-button>
     </form>
 </main>

@@ -13,6 +13,7 @@ import { SignupPageComponent } from './signup-page/signup-page.component';
 import { ProfilPageComponent } from './profil-page/profil-page.component';
 import { RoleButtonComponent } from './role-button/role-button.component';
 import { FriendListPageComponent } from './friend-list-page/friend-list-page.component';
+import { LoadingButtonComponent } from './loading-button/loading-button.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'profil', pathMatch: 'full' },
@@ -32,6 +33,7 @@ const routes: Routes = [
     ProfilPageComponent,
     RoleButtonComponent,
     FriendListPageComponent,
+    LoadingButtonComponent,
   ],
   imports: [
     BrowserModule,
