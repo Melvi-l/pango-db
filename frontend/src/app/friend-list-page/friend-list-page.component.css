@@ -4,8 +4,8 @@
     padding: 16px;
     display: flex;
     flex-direction: row;
-    justify-content: start;
-    align-items: start;
+    justify-content: flex-start;
+    align-items: flex-start;
     gap: 16px;
 }
 
@@ -15,28 +15,29 @@ main {
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: start;
-    align-items: start;
-    gap: 8px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 12px;
 }
 ul {
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: start;
-    align-items: start;
-    gap: 12px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 16px;
 }
 li {
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: start;
-    align-items: center;
+    justify-content: flex-start;    align-items: center;
     gap: 8px;
     cursor: pointer;
 }
 .icon {
+    background: #606060;
+    border-radius: 1000px;
     height: 26px;
     aspect-ratio: 1;
     background-size: cover;
@@ -90,8 +91,7 @@ header {
     border: black 2px solid;
     display: flex;
     flex-direction: row;
-    justify-content: start;
-    align-items: center;
+    justify-content: flex-start;    align-items: center;
     gap: 8px;
 }
 .search {

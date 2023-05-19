@@ -8,8 +8,7 @@
 .profil {
     display: flex;
     flex-direction: row;
-    justify-content: start;
-    align-items: stretch;
+    justify-content: flex-start;    align-items: stretch;
     width: 70vw;
     gap: 16px;
     height: 70vh;
