@@ -4,12 +4,15 @@
             <fieldset>
                 <label for="username">Nom d'utilisateur</label>
                 <input id="username" type="text" formControlName="username"/>
+                <div *ngIf="logInForm.get('username')?.touched && logInForm.get('username')?.hasError('required')" class="error">Nom d'utilisateur requis.</div>
             </fieldset>
             <fieldset>
                 <label for="password">Mot de passe</label>
                 <input id="password" type="password" formControlName="password"/>
+                <div *ngIf="logInForm.get('password')?.touched && logInForm.get('password')?.hasError('required')" class="error">Mot de passe requis.</div>
             </fieldset>
             <!-- TODO impl: gestion des erreurs -->
             <loading-button [isDisabled]="logInForm.invalid" [isLoading]="isLoading">Se connecter</loading-button>
         </form>
+        <div class="error">{{error}}</div>
 </main>

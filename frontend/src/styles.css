@@ -45,3 +45,7 @@ button.plain {
 button.plain:disabled {
     opacity: .5;
 }
+
+.error {
+    color: rgb(173, 0, 0)   
+}

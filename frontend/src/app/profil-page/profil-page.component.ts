@@ -17,6 +17,7 @@ const ROLE_LIST: Role[] = [
 export class ProfilPageComponent implements OnInit {
 
   isFormLoading: boolean = false
+  error: string = ""
 
   pangolin?: PangolinModel
   roleList: Role[] = ROLE_LIST;
@@ -34,6 +35,9 @@ export class ProfilPageComponent implements OnInit {
         next: (pangolin) => {
           console.log(pangolin)
           this.pangolin = pangolin
+        },
+        error: (error) => {
+          this.error = error.message
         }
       })
   }
@@ -48,7 +52,7 @@ export class ProfilPageComponent implements OnInit {
           console.log(resBody.message)
         },
         error: (error) => {
-          console.log(error)
+          this.error = error.message
           this.isFormLoading = false
         },
         complete: () => {

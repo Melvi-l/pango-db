@@ -3,17 +3,23 @@
     <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
         <fieldset>
             <label for="username">Nom d'utilisateur</label>
-            <input id="username" type="text" formControlName="username"/>
+            <input id="username" type="text" formControlName="username" />
+                <div *ngIf="signUpForm.get('username')?.touched && signUpForm.get('username')?.hasError('required')" class="error">Nom d'utilisateur requis.</div>
         </fieldset>
         <fieldset>
             <label for="password">Mot de passe</label>
-            <input id="password" type="password" formControlName="password"/>  
+            <input id="password" type="password" formControlName="password" />
+                <div *ngIf="signUpForm.get('password')?.touched && signUpForm.get('password')?.hasError('required')" class="error">Mot de passe requis.</div>
         </fieldset>
         <fieldset>
             <label for="confirmPassword">Confirmer le mot de passe</label>
-            <input id="confirmPassword" type="password" formControlName="confirmPassword"/>  
+            <input id="confirmPassword" type="password" formControlName="confirmPassword" />
+            <div *ngIf="signUpForm.get('confirmPassword')?.touched && signUpForm.hasError('passwordsMismatch')" class="error">
+                Les mots de passe ne correspondent pas.
+            </div>
         </fieldset>
         <!-- TODO impl: gestion des erreurs -->
         <loading-button [isDisabled]="signUpForm.invalid" [isLoading]="isLoading">S'inscrire</loading-button>
     </form>
+    <div class="error">{{error}}</div>
 </main>
