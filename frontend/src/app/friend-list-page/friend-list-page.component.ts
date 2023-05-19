@@ -20,6 +20,7 @@ export class FriendListPageComponent implements OnInit {
     this.fetchUserPangolin()
     this.fetchPangolinList()
   }
+
   // API
   fetchUserPangolin() {
     this.pagolinService.findOnePangolin(this.authService.getUserId())
@@ -68,11 +69,13 @@ export class FriendListPageComponent implements OnInit {
   friendList(): PangolinModel[] {
     return this.pangolinList.filter((otherPangolin) => this.userPangolin?.friendIdList.some((friendId) => otherPangolin._id == friendId))
   }
-  isFriend(otherPangolin: PangolinModel) {
-    return this.userPangolin?.friendIdList.some((friendId) => friendId == otherPangolin._id)
+  isFriend(otherPangolin: PangolinModel): boolean {
+    if (!this.userPangolin) {
+      return false
+    }
+    return this.userPangolin.friendIdList.some((friendId) => friendId == otherPangolin._id) 
   }
-  getIcon(pangolin: PangolinModel) {
-    console.log(pangolin)
+  getIcon(pangolin: PangolinModel): string {
     return `url(../../assets/icons/${pangolin.role.toLowerCase()}.png)`
   }
 
