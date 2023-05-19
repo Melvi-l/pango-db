@@ -14,6 +14,8 @@ const pangolinRoutes = require('./routes/pangolin')
 app.use('/auth', authRoutes)
 app.use('/pangolin', pangolinRoutes)
 
+app.get('/', (req, res) => res.send("Hello World !"))
+
 const PORT = 8080
 app.listen(PORT, () => {
     console.log("Server started")
