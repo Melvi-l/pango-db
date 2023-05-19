@@ -3,16 +3,17 @@
     width: 100%;
     display: grid;
     place-items: center;
+    margin-bottom: 5vh;
 }
 
 .profil {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;    align-items: stretch;
+    justify-content: flex-start;    
+    align-items: stretch;
     width: 70vw;
     gap: 16px;
     height: 70vh;
-    margin-bottom: 5vh;
 }
 
 .card {

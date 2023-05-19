@@ -53,7 +53,7 @@ export class SignupPageComponent implements OnInit {
         },
         error: (error) => {
           console.error(error)
-          this.error = error
+          this.error = error.message
           this.isLoading = true
         },
         complete: () => {
