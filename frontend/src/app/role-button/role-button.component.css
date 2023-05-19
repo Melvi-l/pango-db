@@ -1,6 +1,6 @@
 .wrapper {
     align-self: stretch;
-    padding: 12px 16px;
+    padding: 12px 32px 12px 16px;
     border-radius: 1000px;
     display: flex;
     flex-direction: row;
@@ -19,5 +19,7 @@
     aspect-ratio: 1;
     background-size: cover;
     background-position: center;
+    background: #606060;
+    border-radius: 1000px;
 }
 
