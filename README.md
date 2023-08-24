@@ -1,5 +1,7 @@
 # PangoDB
 
+Projet d'entretien embauche Appartoo.
+
 ## Setup
 
 1. API
